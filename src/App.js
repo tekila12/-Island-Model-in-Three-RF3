@@ -1,46 +1,34 @@
-import logo from './logo.svg';
-import './App.css';
-import {Canvas} from '@react-three/fiber'
-import { Environment, Lightformer, PositionalAudio } from '@react-three/drei'
-import Sun from './Sun'
 
+import './App.css';
+import { useState } from 'react'
+import { Canvas, extend } from '@react-three/fiber'
+import { Effects } from '@react-three/drei'
+import { UnrealBloomPass } from 'three-stdlib'
+import {  PositionalAudio } from '@react-three/drei'
+import Sun from './Sun'
+import Island from './Island';
+extend({ UnrealBloomPass })
 
 
 function App() {
   return (
-    <div style={{ width: "100vw", height: "100vh" }}>
-    <Canvas className='canvas' >
-    <ambientLight intensity={0.6} />
-      <spotLight
-        angle={0.12}
-        penumbra={0.1}
-        position={[10, 0, -10]}
-        intensity={40}
-        onUpdate={(self) => {
-          self.target.position.set(-10, 0, 0)
-          self.target.updateMatrixWorld()
-        }}
-      />
-      <Sun scale={0.25} position={[-1.5, -2.55, 0]} color={'red'}/>
-      <Environment resolution={102}>
-        {/* Ceiling */}
-        <Lightformer intensity={2} rotation-x={Math.PI / 2} position={[0, 4, -9]} scale={[10, 1, 1]} />
-        <Lightformer intensity={2} rotation-x={Math.PI / 2} position={[0, 4, -6]} scale={[10, 1, 1]} />
-        <Lightformer intensity={2} rotation-x={Math.PI / 2} position={[0, 4, -3]} scale={[10, 1, 1]} />
-        <Lightformer intensity={2} rotation-x={Math.PI / 2} position={[0, 4, 0]} scale={[10, 1, 1]} />
-        <Lightformer intensity={2} rotation-x={Math.PI / 2} position={[0, 4, 3]} scale={[10, 1, 1]} />
-        <Lightformer intensity={2} rotation-x={Math.PI / 2} position={[0, 4, 6]} scale={[10, 1, 1]} />
-        <Lightformer intensity={2} rotation-x={Math.PI / 2} position={[0, 4, 9]} scale={[10, 1, 1]} />
-        {/* Sides */}
-   
-        {/* Key */}
-        <Lightformer form="ring" color="red" intensity={10} scale={2} position={[10, 5, 10]} onUpdate={(self) => self.lookAt(0, 0, 0)} />
-        
-      </Environment> 
-    
+    <div style={{ width: "100vw", height: "100vh" }}>   
+    <Canvas gl={{ logarithmicDepthBuffer: true, antialias: false }} dpr={[1, 1.5]} camera={{ position: [0, 0, 15], fov: 25 }}>
+      <color attach="background" args={['blue']} />
+      <Effects disableGamma>      
+        <unrealBloomPass threshold={1} strength={1} radius={1} />
+      </Effects>
+{/*      
+      <Sun color={[1, 4, 0.5]} position={[2, 0, 0]}>
+        <circleGeometry args={[0.8, 64]} />
+      </Sun>
+      
+      <PositionalAudio autoplay loop url="/seawave.wav" distance={10} />   */}
 
-      <PositionalAudio autoplay loop url="/seawave.wav" distance={5} />
+      
    
+       <Island castShadow receiveShadow scale ={0.4} position={[1,-3,2]}/>
+       
       </Canvas>
    </div>
   );

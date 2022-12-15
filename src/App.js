@@ -19,11 +19,11 @@ function App() {
         <unrealBloomPass threshold={1} strength={1} radius={1} />
       </Effects>
      
-      {/* <Sun color={[1, 4, 0.5]} position={[2, 0, 0]}>
+      <Sun color={[1, 4, 0.5]} position={[2, 0, 0]}>
         <circleGeometry args={[0.8, 64]} />
       </Sun>
       
-      <PositionalAudio autoplay loop url="/seawave.wav" distance={10} />   */}
+      <PositionalAudio autoplay loop url="/seawave.wav" distance={10} />  
 
       
    

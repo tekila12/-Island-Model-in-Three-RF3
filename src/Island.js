@@ -8,13 +8,11 @@ export default function Island({ ...props }) {
   useLayoutEffect(() => {
     Object.values(materials).forEach((material) =>
     (material.roughness = 0,
-      material.Color = Color,
       material.metalness = 0,
-      material.fog = true,
       material.envMapIntensity,
-      material.emissiveIntensity = 0,
+      material.emissiveIntensity = 1,
       material.flatShading = false,
-      material.emmisive = 1),)
+      material.emmisive = 2),)
     console.log(materials)
     Object.assign("materials.Material.004",
       {

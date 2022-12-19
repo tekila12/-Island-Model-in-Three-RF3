@@ -21,5 +21,5 @@ export default function Island({ ...props }) {
         metalness: 1,
       })
   }, [materials])
-  return <primitive object={scene}  {...props} />
+  return <primitive object={scene} castShadow={true}  {...props} />
 }

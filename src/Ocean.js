@@ -14,17 +14,17 @@ export default function Ocean() {
   const geom = useMemo(() => new THREE.PlaneGeometry(10000, 10000), [])
   const config = useMemo(
     () => ({
-      textureWidth: 512,
-      textureHeight: 512,
+      textureWidth: 412,
+      textureHeight: 412,
       waterNormals,
-      sunDirection: new THREE.Vector3(),
-      sunColor: '#095B93',
-      waterColor: '#242834',
+      sunDirection: new THREE.Vector3(-1,-1,2),
+      elevation:1.6,
+      waterColor: '#0548a6',
       distortionScale: 3.7,
       fog: false,
       format: gl.encoding
     }),
-    [waterNormals]
+    [waterNormals, gl]
   )
   useFrame((state, delta) => (ref.current.material.uniforms.time.value += delta))
   return <water ref={ref} args={[geom, config]} rotation-x={-Math.PI / 2} />

@@ -12,6 +12,7 @@ import Ocean from './Ocean';
 import Clouds from './Clouds'
 import Dolphin from './Dolphin'
 import { Cloud } from '@react-three/drei';
+import Swimmer from './Swimmer'
 extend({ UnrealBloomPass })
 
 
@@ -37,6 +38,8 @@ function App() {
        <Island  receiveShadow scale ={2.21} position={[-1.3,-2.3,5.1]} rotation={[-0.22,-1.45, 6.06]}/>
        <Clouds scale ={449.21} position={[-668.5,-236.3,-1998.1]} rotation={[-0.33,-0.45, 7.06]} />
        <Dolphin scale ={9.21} position={[-608.5,13.3,-598.1]} rotation={[-0.33,-1.45, 7.06]}/>
+       <Swimmer scale ={19.21} position={[-608.5,13.3,-498.1]} rotation={[-0.33,-1.45, 7.06]}/>
+       
        <Environment resolution={512}>       
         <Lightformer intensity={2} rotation-x={Math.PI / 2} position={[0, 4, -9]} scale={[10, 1, 1]} />
         <Lightformer intensity={2} rotation-x={Math.PI / 2} position={[0, 4, -6]} scale={[10, 1, 1]} />

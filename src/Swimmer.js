@@ -5,23 +5,43 @@ import { useGLTF, useAnimations} from '@react-three/drei'
 import { Color } from 'three'
 export default function Island({ ...props }) {
   const { scene, materials,animations } = useGLTF('/GoodSwimmer.gltf', )
- const group = useRef()
+  const group = useRef()
+ const {actions, }= useAnimations(animations, group)
+
+ console.log(actions); 
 //   useFrame((_, delta) => {
 //     group.current.rotation.x += 1.5 * delta
 //   })
 
-const {actions, mixer}= useAnimations(animations, group)
-useEffect(()=>{
-    actions.Swim.play()
-},[mixer,])
+function handlePress() {
+ 
+  console.log('handlePress called');
+  try {
+    // play the Spin1 animation action
+    actions.Swim.play();
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+console.log(actions);
+useFrame(() => {
+  console.log(group.current);
+  group.current.addEventListener('mousedown', handlePress);
+});
 
 
-console.log(materials)
+
+
+
+console.log(actions);
+
+
   useLayoutEffect(() => {
     Object.values(materials).forEach((material) =>(       
       material.color = new THREE.Color('#050b1c') 
       ),)
-    console.log(materials)
+  
     Object.assign("materials.Material.004",
       {
         envMapIntensity: 1,
@@ -29,5 +49,5 @@ console.log(materials)
         metalness: 1,
       })
   }, [materials])
-  return <primitive object={scene} ref={group} {...props} />
+  return <primitive object={scene} ref={group} onClick={handlePress} {...props} />
 }

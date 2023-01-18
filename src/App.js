@@ -41,20 +41,7 @@ function App() {
        <Dolphin scale ={9.21} position={[-608.5, 13.3,-698.1]} rotation={[-0.33,-1.45, 7.06]}/>
        <Swimmer scale ={19.21} position={[-808.6, 193.3,-698.1]} rotation={[-0.33,-1.45, 7.06]}/>
        <Boat scale ={69.21} position={[-308,293,798.1]} rotation={[-0.33,-1.45, 7.06]} />
-       <Environment resolution={512}>       
-        <Lightformer intensity={2} rotation-x={Math.PI / 2} position={[0, 4, -9]} scale={[10, 1, 1]} />
-        <Lightformer intensity={2} rotation-x={Math.PI / 2} position={[0, 4, -6]} scale={[10, 1, 1]} />
-        <Lightformer intensity={2} rotation-x={Math.PI / 2} position={[0, 4, -3]} scale={[10, 1, 1]} />
-        <Lightformer intensity={2} rotation-x={Math.PI / 2} position={[0, 4, 0]} scale={[10, 1, 1]} />
-        <Lightformer intensity={2} rotation-x={Math.PI / 2} position={[0, 4, 3]} scale={[10, 1, 1]} />
-        <Lightformer intensity={2} rotation-x={Math.PI / 2} position={[0, 4, 6]} scale={[10, 1, 1]} />
-        <Lightformer intensity={2} rotation-x={Math.PI / 2} position={[0, 4, 9]} scale={[10, 1, 1]} />
-       
-        <Lightformer intensity={2} rotation-y={Math.PI / 2} position={[-50, 2, 0]} scale={[100, 2, 1]} />
-        <Lightformer intensity={2} rotation-y={-Math.PI / 2} position={[50, 2, 0]} scale={[100, 2, 1]} />
-        
-        <Lightformer form="ring" color="blue" intensity={10} scale={2} position={[10, 5, 10]} onUpdate={(self) => self.lookAt(0, 0, 0)} />
-      </Environment>
+  <Environment preset='sunset'/>
       <Ocean />  
         <Sky scale={1000} sunPosition={[800, 120, 1000]} azimuth={0.25} turbidity={0.9} /> 
      

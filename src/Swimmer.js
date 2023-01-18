@@ -8,14 +8,12 @@ export default function Island({ ...props }) {
   const group = useRef()
  const {actions, }= useAnimations(animations, group)
 
- console.log(actions); 
 //   useFrame((_, delta) => {
 //     group.current.rotation.x += 1.5 * delta
 //   })
 
 function handlePress() {
  
-  console.log('handlePress called');
   try {
     // play the Spin1 animation action
     actions.Swim.play();
@@ -24,7 +22,7 @@ function handlePress() {
   }
 }
 
-console.log(actions);
+
 useFrame(() => {
   console.log(group.current);
   group.current.addEventListener('mousedown', handlePress);
@@ -34,7 +32,7 @@ useFrame(() => {
 
 
 
-console.log(actions);
+
 
 
   useLayoutEffect(() => {

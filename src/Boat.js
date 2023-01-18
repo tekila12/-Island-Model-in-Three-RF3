@@ -8,12 +8,10 @@ export default function Boat({ ...props }) {
 
 
 
-console.log(materials)
   useLayoutEffect(() => {
     Object.values(materials).forEach((material) =>(       
       material.color = new THREE.Color('#050b1c') 
       ),)
-    console.log(materials)
     Object.assign("materials.Material.004",
       {
         envMapIntensity: 1,

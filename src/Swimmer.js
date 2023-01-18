@@ -24,7 +24,6 @@ function handlePress() {
 
 
 useFrame(() => {
-  console.log(group.current);
   group.current.addEventListener('mousedown', handlePress);
 });
 

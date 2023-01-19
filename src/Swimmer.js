@@ -1,38 +1,26 @@
-import * as THREE from 'three'
+
 import { useEffect, useLayoutEffect, useRef } from 'react'
 import {useFrame } from '@react-three/fiber'
 import { useGLTF, useAnimations} from '@react-three/drei'
 import { Color } from 'three'
-export default function Island({ ...props }) {
-  const { scene, materials,animations } = useGLTF('/GoodSwimmer.gltf', )
-  const group = useRef()
+import * as THREE from 'three'
+export default function Swimmer({ ...props }) {
+ const { scene, materials,animations } = useGLTF('/GoodSwimmer.gltf', )
+ const group = useRef()
  const {actions, }= useAnimations(animations, group)
 
-//   useFrame((_, delta) => {
-//     group.current.rotation.x += 1.5 * delta
-//   })
-
-function handlePress() {
+ const t = useRef(0);
+ const animationDuration = 10;  // in seconds
+  
+ useFrame((state) => {
+   t.current += 0.001;
+   group.current.position.x = 100*Math.sin(t.current) + 100;
+   actions.Swim.play()
+ }, 1);
  
-  try {
-    // play the Spin1 animation action
-    actions.Swim.play();
-  } catch (error) {
-    console.error(error);
-  }
-}
-
-
-useFrame(() => {
-  group.current.addEventListener('mousedown', handlePress);
-});
-
-
-
-
-
-
-
+ setTimeout(() => {
+   t.current = 0;
+ }, animationDuration * 1000)
 
   useLayoutEffect(() => {
     Object.values(materials).forEach((material) =>(       
@@ -46,5 +34,5 @@ useFrame(() => {
         metalness: 1,
       })
   }, [materials])
-  return <primitive object={scene} ref={group} onClick={handlePress} {...props} />
+  return <primitive object={scene} ref={group}  {...props} />
 }

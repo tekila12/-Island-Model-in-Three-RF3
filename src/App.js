@@ -31,7 +31,7 @@ const Loader =()=>{
 function App() {
   return (
     <div style={{ width: "100vw", height: "100vh" }}>   
-      <Canvas enableShadow shadowMap camera={{ position: [10, 30, 100], fov: 55, near: 1, far: 20000 }}>
+      <Canvas enableShadow shadowMap camera={{ position: [90, 80, 150], fov: 55, near: 1, far: 20000 }}>
         <Suspense fallback={<Loader />}>
           <Effects disableGamma>
             <unrealBloomPass threshold={0} strength={0} radius={1} />
@@ -49,7 +49,7 @@ function App() {
           <Island receiveShadow scale={2.21} position={[-1.3, -2.3, 5.1]} rotation={[-0.22, -1.45, 6.06]} />
           <Clouds scale={449.21} position={[-668.5, -236.3, -1998.1]} rotation={[-0.33, -0.45, 7.06]} />
           <Dolphin scale={9.21} position={[-608.5, 13.3, -698.1]} rotation={[-0.33, -1.45, 7.06]} />
-          <Swimmer scale={19.21} position={[-808.6, 193.3, -698.1]} rotation={[-0.33, -1.45, 7.06]} />
+          <Swimmer scale={0.91} position={[808.6, -7.8, 10.1]} rotation={[0, 1, 0]} />
           <Boat scale={69.21} position={[-308, 293, 798.1]} rotation={[-0.33, -1.45, 7.06]} />
           <Environment preset='sunset' />
           <PositionalAudio autoplay loop url="/seawave.wav" distance={5} />  

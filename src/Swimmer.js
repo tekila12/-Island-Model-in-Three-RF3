@@ -10,7 +10,7 @@ export default function Swimmer({ ...props }) {
  const {actions, }= useAnimations(animations, group)
 
  const t = useRef(0);
- const animationDuration = 10;  // in seconds
+ const animationDuration = 100;  // in seconds
   
  useFrame((state) => {
    t.current += 0.001;
@@ -36,3 +36,5 @@ export default function Swimmer({ ...props }) {
   }, [materials])
   return <primitive object={scene} ref={group}  {...props} />
 }
+
+
